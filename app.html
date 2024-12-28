@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Favicon - make sure it's in your static folder -->
+    <link rel="icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- SvelteKit injects head elements dynamically here -->
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <!-- This is where SvelteKit will inject your pages -->
+    <div style="display: contents">%sveltekit.body%</div>
+
+    <!-- Optional: Custom script for initializing Blockly if needed -->
+    <script type="module">
+      import * as Blockly from 'blockly/core';
+      import 'blockly/python';
+
+      // Initialize Blockly after DOM content is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        const blocklyDiv = document.getElementById('blocklyDiv');
+        const workspace = Blockly.inject(blocklyDiv, {
+          toolbox: document.getElementById('toolbox'),
+        });
+      });
+    </script>
+  </body>
+</html>
